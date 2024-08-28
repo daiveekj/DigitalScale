@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View CSV Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .output-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .output {
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<h1>User Info</h1>
+
+<div class="button-container">
+    <button onclick="displayCSV(csv1)">View User 1</button>
+    <button onclick="displayCSV(csv2)">View User 2</button>
+    <button onclick="displayCSV(csv3)">View User 3</button>
+</div>
+
+<div class="output-container">
+    <div id="output" class="output"></div>
+</div>
+
+<script>
+    function jsonToCSV(jsonData) {
+        const headers = Object.keys(jsonData[0]).join(",") + "\n";
+        const rows = jsonData.map(row => Object.values(row).join(",")).join("\n");
+        return headers + rows;
+    }
+
+    const jsonData1 = [
+        { "id": 1, "weight": 50, "date": "2024-08-27", "time": "12:34:56" },
+        { "id": 2, "weight": 51, "date": "2024-08-28", "time": "13:34:56" },
+        { "id": 3, "weight": 52, "date": "2024-08-29", "time": "14:34:56" },
+        { "id": 4, "weight": 53, "date": "2024-08-30", "time": "15:34:56" },
+        { "id": 5, "weight": 54, "date": "2024-08-31", "time": "16:34:56" },
+        { "id": 6, "weight": 55, "date": "2024-09-01", "time": "17:34:56" },
+        { "id": 7, "weight": 56, "date": "2024-09-02", "time": "18:34:56" },
+        { "id": 8, "weight": 57, "date": "2024-09-03", "time": "19:34:56" },
+        { "id": 9, "weight": 58, "date": "2024-09-04", "time": "20:34:56" },
+        { "id": 10, "weight": 59, "date": "2024-09-05", "time": "21:34:56" }
+    ];
+
+    const jsonData2 = [
+        { "id": 101, "weight": 60, "date": "2024-09-10", "time": "08:00:00" },
+        { "id": 102, "weight": 62, "date": "2024-09-11", "time": "09:00:00" },
+        { "id": 103, "weight": 64, "date": "2024-09-12", "time": "10:00:00" },
+        { "id": 104, "weight": 66, "date": "2024-09-13", "time": "11:00:00" },
+        { "id": 105, "weight": 68, "date": "2024-09-14", "time": "12:00:00" },
+        { "id": 106, "weight": 70, "date": "2024-09-15", "time": "13:00:00" },
+        { "id": 107, "weight": 72, "date": "2024-09-16", "time": "14:00:00" },
+        { "id": 108, "weight": 74, "date": "2024-09-17", "time": "15:00:00" },
+        { "id": 109, "weight": 76, "date": "2024-09-18", "time": "16:00:00" },
+        { "id": 110, "weight": 78, "date": "2024-09-19", "time": "17:00:00" }
+    ];
+
+    const jsonData3 = [
+        { "id": 201, "weight": 70, "date": "2024-09-20", "time": "06:00:00" },
+        { "id": 202, "weight": 72, "date": "2024-09-21", "time": "07:00:00" },
+        { "id": 203, "weight": 74, "date": "2024-09-22", "time": "08:00:00" },
+        { "id": 204, "weight": 76, "date": "2024-09-23", "time": "09:00:00" },
+        { "id": 205, "weight": 78, "date": "2024-09-24", "time": "10:00:00" },
+        { "id": 206, "weight": 80, "date": "2024-09-25", "time": "11:00:00" },
+        { "id": 207, "weight": 82, "date": "2024-09-26", "time": "12:00:00" },
+        { "id": 208, "weight": 84, "date": "2024-09-27", "time": "13:00:00" },
+        { "id": 209, "weight": 86, "date": "2024-09-28", "time": "14:00:00" },
+        { "id": 210, "weight": 88, "date": "2024-09-29", "time": "15:00:00" }
+    ];
+
+    const csv1 = jsonToCSV(jsonData1);
+    const csv2 = jsonToCSV(jsonData2);
+    const csv3 = jsonToCSV(jsonData3);
+
+    function displayCSV(csvData) {
+        document.getElementById('output').textContent = csvData;
+    }
+</script>
+
+</body>
+</html>
+
